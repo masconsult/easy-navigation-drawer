@@ -29,6 +29,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
         findViewById(android.R.id.button1).setOnClickListener(this);
         findViewById(android.R.id.button2).setOnClickListener(this);
         findViewById(android.R.id.button3).setOnClickListener(this);
+        findViewById(R.id.button4).setOnClickListener(this);
     }
 
     @Override
@@ -42,6 +43,9 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
                 break;
             case android.R.id.button3:
                 startActivity(new Intent(this, ChildActivity.class));
+                break;
+            case R.id.button4:
+                startActivity(new Intent(this, FragmentMenuActivity.class));
                 break;
         }
     }
