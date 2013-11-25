@@ -54,7 +54,7 @@ public class EasyNavigationDrawerBuilder {
         return this;
     }
 
-    public void install(FragmentActivity activity) {
+    public EasyNavigationDrawerFragment install(FragmentActivity activity) {
         FragmentManager fragmentManager = activity.getSupportFragmentManager();
 
         EasyNavigationDrawerFragment drawerFragment = (EasyNavigationDrawerFragment) fragmentManager.findFragmentByTag(DRAWER_FRAGMENT);
@@ -69,6 +69,7 @@ public class EasyNavigationDrawerBuilder {
         drawerFragment.setupDrawer(activity, contentLayoutResID, leftContentLayoutResID);
 
         drawerFragment.getDrawerToggle().setDrawerIndicatorEnabled(drawerIndicatorEnabled);
+        return drawerFragment;
     }
 
 }
