@@ -28,6 +28,8 @@ public class EasyNavigationDrawerFragment extends Fragment implements DrawerList
 
     private int drawerIndicator;
 
+    private final DrawerObservable drawerObservable = new DrawerObservable();
+
     public EasyNavigationDrawerFragment() {
         setHasOptionsMenu(true);
     }
@@ -64,21 +66,25 @@ public class EasyNavigationDrawerFragment extends Fragment implements DrawerList
     @Override
     public void onDrawerOpened(View drawerView) {
         drawerToggle.onDrawerOpened(drawerView);
+        drawerObservable.onDrawerOpened(drawerView);
     }
 
     @Override
     public void onDrawerClosed(View drawerView) {
         drawerToggle.onDrawerClosed(drawerView);
+        drawerObservable.onDrawerClosed(drawerView);
     }
 
     @Override
     public void onDrawerSlide(View drawerView, float slideOffset) {
         drawerToggle.onDrawerSlide(drawerView, slideOffset);
+        drawerObservable.onDrawerSlide(drawerView, slideOffset);
     }
 
     @Override
     public void onDrawerStateChanged(int newState) {
         drawerToggle.onDrawerStateChanged(newState);
+        drawerObservable.onDrawerStateChanged(newState);
     }
 
     /**
@@ -120,11 +126,35 @@ public class EasyNavigationDrawerFragment extends Fragment implements DrawerList
         a.recycle();
     }
 
-    public DrawerLayout getDrawerLayout() {
-        return drawerLayout;
+    public void registerDrawerListener(DrawerListener listener) {
+        drawerObservable.registerObserver(listener);
     }
 
-    public ActionBarDrawerToggle getDrawerToggle() {
-        return drawerToggle;
+    public void unregisterDrawerListener(DrawerListener listener) {
+        drawerObservable.unregisterObserver(listener);
+    }
+
+    public void closeDrawers() {
+        drawerLayout.closeDrawers();
+    }
+
+    public void closeDrawer(int gravity) {
+        drawerLayout.closeDrawer(gravity);
+    }
+
+    public void closeDrawer(View drawerView) {
+        drawerLayout.closeDrawer(drawerView);
+    }
+
+    public void openDrawer(int gravity) {
+        drawerLayout.openDrawer(gravity);
+    }
+
+    public void openDrawer(View drawerView) {
+        drawerLayout.openDrawer(drawerView);
+    }
+
+    public void setDrawerIndicatorEnabled(boolean enable) {
+        drawerToggle.setDrawerIndicatorEnabled(enable);
     }
 }

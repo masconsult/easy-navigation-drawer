@@ -68,7 +68,7 @@ public class EasyNavigationDrawerBuilder {
 
         drawerFragment.setupDrawer(activity, contentLayoutResID, leftContentLayoutResID);
 
-        drawerFragment.getDrawerToggle().setDrawerIndicatorEnabled(drawerIndicatorEnabled);
+        drawerFragment.setDrawerIndicatorEnabled(drawerIndicatorEnabled);
         return drawerFragment;
     }
 
